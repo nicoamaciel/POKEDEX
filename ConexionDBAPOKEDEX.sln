@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33423.256
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConexionDBAPOKEDEX", "ConexionDBAPOKEDEX\ConexionDBAPOKEDEX.csproj", "{A8836260-89E7-4EA9-A43C-8E82D657CA45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "ConexionDBAPOKEDEX\Presentacion.csproj", "{A8836260-89E7-4EA9-A43C-8E82D657CA45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{B201BCAD-9432-4DAE-8A9B-A66831A96431}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{DB3A36CC-23CC-4193-9FF1-367F816395C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A8836260-89E7-4EA9-A43C-8E82D657CA45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8836260-89E7-4EA9-A43C-8E82D657CA45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8836260-89E7-4EA9-A43C-8E82D657CA45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B201BCAD-9432-4DAE-8A9B-A66831A96431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B201BCAD-9432-4DAE-8A9B-A66831A96431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B201BCAD-9432-4DAE-8A9B-A66831A96431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B201BCAD-9432-4DAE-8A9B-A66831A96431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB3A36CC-23CC-4193-9FF1-367F816395C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB3A36CC-23CC-4193-9FF1-367F816395C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB3A36CC-23CC-4193-9FF1-367F816395C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB3A36CC-23CC-4193-9FF1-367F816395C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

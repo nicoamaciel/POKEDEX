@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConexionDBAPOKEDEX
 {
-    class Pokemon
+    public class Pokemon
     {
         public int Numero { get; set; }
         public string Nombre { get; set; }
