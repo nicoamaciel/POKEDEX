@@ -43,7 +43,7 @@ namespace ConexionDBAPOKEDEX
             }
             finally
             {
-                datos.cerrarConexion();
+                datos.cerrarConexion();   
             }
 
         }

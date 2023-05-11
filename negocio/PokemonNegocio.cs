@@ -53,6 +53,11 @@ namespace ConexionDBAPOKEDEX
 
 		}
 
+		public void agregar(Pokemon nuevo)
+        {
+
+        }
+
 		
 	}
 }
