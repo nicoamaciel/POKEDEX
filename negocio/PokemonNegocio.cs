@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using dominio;
+using negocio;
  
 namespace ConexionDBAPOKEDEX
 {
@@ -55,6 +56,23 @@ namespace ConexionDBAPOKEDEX
 
 		public void agregar(Pokemon nuevo)
         {
+			AccesoDatos datos = new AccesoDatos();
+            try
+            {
+				datos.setearConsulta("Insert into POKEMONS (Numero, Nombre, Descripcion, Activo)values(" + nuevo.Numero + ",' " + nuevo.Nombre + " ',' " + nuevo.Descripcion + " ', 1); ");
+				datos.ejecutarAccion();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+				datos.cerrarConexion();
+            }
 
         }
 

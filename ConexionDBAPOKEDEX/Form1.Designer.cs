@@ -38,7 +38,10 @@ namespace ConexionDBAPOKEDEX
             // 
             // dgvPOKEMONS
             // 
+            this.dgvPOKEMONS.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
+            this.dgvPOKEMONS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPOKEMONS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPOKEMONS.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.dgvPOKEMONS.Location = new System.Drawing.Point(12, 29);
             this.dgvPOKEMONS.Name = "dgvPOKEMONS";
             this.dgvPOKEMONS.Size = new System.Drawing.Size(558, 250);
@@ -76,6 +79,7 @@ namespace ConexionDBAPOKEDEX
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.TransparencyKey = System.Drawing.Color.Black;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOKEMONS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPokemon)).EndInit();

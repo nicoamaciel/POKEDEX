@@ -46,5 +46,20 @@ namespace ConexionDBAPOKEDEX
         {
             Close();
         }
+
+        private void frmAltaPokemon_Load(object sender, EventArgs e)
+        {
+            ElementosNegocio elementosNegocio = new ElementosNegocio();
+            try
+            {
+                cboTipo.DataSource = elementosNegocio.listar();
+                cboDebilidad.DataSource = elementosNegocio.listar(); 
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+         }
     }
 }
