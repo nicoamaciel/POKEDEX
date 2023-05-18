@@ -1,7 +1,7 @@
 ﻿
 namespace ConexionDBAPOKEDEX
 {
-    partial class Form1
+    partial class frmPokemon
     {
         /// <summary>
         /// Required designer variable.

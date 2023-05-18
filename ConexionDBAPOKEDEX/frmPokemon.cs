@@ -15,11 +15,11 @@ namespace ConexionDBAPOKEDEX
 {
 
     
-    public partial class Form1 : Form
+    public partial class frmPokemon : Form
     {
         private List<Pokemon> listaPokemon;
 
-        public Form1()
+        public frmPokemon()
         {
             InitializeComponent();
         }
@@ -29,6 +29,8 @@ namespace ConexionDBAPOKEDEX
             PokemonNegocio negocio = new PokemonNegocio();
             listaPokemon = negocio.listar();
             dgvPOKEMONS.DataSource = listaPokemon;
+            dgvPOKEMONS.Columns["UrlImagen"].Visible = false;
+            /*Ocultar columna url imagen para mejorar visualizacion y evitar scroll*/
             cargarImagen(listaPokemon[0].urlImagen);
 
 

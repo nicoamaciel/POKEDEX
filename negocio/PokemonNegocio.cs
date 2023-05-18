@@ -25,7 +25,7 @@ namespace ConexionDBAPOKEDEX
 			{
 				conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true;";
 				comando.CommandType = System.Data.CommandType.Text;
-				comando.CommandText = "Select Numero, Nombre, Descripcion, UrlImagen From POKEMONS";
+				comando.CommandText = "select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad from POKEMONS P, ELEMENTOS E, ELEMENTOS D  where E.Id = P.IdTipo AND D.Id = P.IdDebilidad";
 				comando.Connection = conexion;
 
 				conexion.Open();
@@ -38,6 +38,12 @@ namespace ConexionDBAPOKEDEX
 					aux.Nombre = (string)lector["Nombre"];
 					aux.Descripcion = (string)lector["Descripcion"];
 					aux.urlImagen = (string)lector["UrlImagen"];
+					/*Incoveniente cuando nace tipo no tiene instancia crear tipo = new elemento()*/
+					/*Enlace de datos erroneo tipo objeto - modificar return*/
+					aux.Tipo = new Elementos();
+					aux.Tipo.Descripcion = (string)lector["Tipo"];
+					aux.Debilidad = new Elementos();
+					aux.Debilidad.Descripcion = (string)lector["Debilidad"];
 
 					lista.Add(aux);
 				}

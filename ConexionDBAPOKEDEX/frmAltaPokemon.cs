@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
-
 namespace ConexionDBAPOKEDEX
 {
     public partial class frmAltaPokemon : Form
@@ -30,6 +29,8 @@ namespace ConexionDBAPOKEDEX
                 poke.Numero = int.Parse(txtNumero.Text);
                 poke.Nombre = txtNombre.Text;
                 poke.Descripcion = txtDescripcion.Text;
+                poke.Tipo = (Elementos)cboTipo.SelectedItem;
+                poke.Debilidad = (Elementos)cboTipo.SelectedItem;
 
                 negocio.agregar(poke);
                 MessageBox.Show("Agregado con exito");
