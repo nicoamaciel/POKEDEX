@@ -41,11 +41,15 @@ namespace ConexionDBAPOKEDEX
             this.dgvPOKEMONS.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
             this.dgvPOKEMONS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPOKEMONS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPOKEMONS.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPOKEMONS.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.dgvPOKEMONS.Location = new System.Drawing.Point(12, 29);
+            this.dgvPOKEMONS.MultiSelect = false;
             this.dgvPOKEMONS.Name = "dgvPOKEMONS";
+            this.dgvPOKEMONS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPOKEMONS.Size = new System.Drawing.Size(558, 250);
             this.dgvPOKEMONS.TabIndex = 0;
+            this.dgvPOKEMONS.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPOKEMONS_CellContentClick);
             this.dgvPOKEMONS.SelectionChanged += new System.EventHandler(this.dgvPOKEMONS_SelectionChanged);
             // 
             // pbPokemon
@@ -67,7 +71,7 @@ namespace ConexionDBAPOKEDEX
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // Form1
+            // frmPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -76,7 +80,7 @@ namespace ConexionDBAPOKEDEX
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.pbPokemon);
             this.Controls.Add(this.dgvPOKEMONS);
-            this.Name = "Form1";
+            this.Name = "frmPokemon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.Color.Black;

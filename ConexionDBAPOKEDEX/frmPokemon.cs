@@ -26,22 +26,32 @@ namespace ConexionDBAPOKEDEX
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            PokemonNegocio negocio = new PokemonNegocio();
-            listaPokemon = negocio.listar();
-            dgvPOKEMONS.DataSource = listaPokemon;
-            dgvPOKEMONS.Columns["UrlImagen"].Visible = false;
-            /*Ocultar columna url imagen para mejorar visualizacion y evitar scroll*/
-            cargarImagen(listaPokemon[0].urlImagen);
-
-
-
-
+            cargar();
         }
 
         private void dgvPOKEMONS_SelectionChanged(object sender, EventArgs e)
         {
             Pokemon seleccionado = (Pokemon)dgvPOKEMONS.CurrentRow.DataBoundItem;
             cargarImagen(seleccionado.urlImagen);
+        }
+
+        private void cargar()
+        {
+            PokemonNegocio negocio = new PokemonNegocio();
+
+            try
+            {
+                listaPokemon = negocio.listar();
+                dgvPOKEMONS.DataSource = listaPokemon;
+                dgvPOKEMONS.Columns["UrlImagen"].Visible = false;
+                /*Ocultar columna url imagen para mejorar visualizacion y evitar scroll*/
+                cargarImagen(listaPokemon[0].urlImagen);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
 
@@ -52,7 +62,7 @@ namespace ConexionDBAPOKEDEX
 
                 pbPokemon.Load(imagen);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 pbPokemon.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png");
@@ -64,8 +74,16 @@ namespace ConexionDBAPOKEDEX
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAltaPokemon alta = new frmAltaPokemon();
-
             alta.ShowDialog();
+            /*Actualizar carga para ver apenas se agrega*/
+            /*Llamar al metodo cargar*/
+            cargar();
+
+        }
+
+        private void dgvPOKEMONS_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

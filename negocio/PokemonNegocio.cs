@@ -37,7 +37,18 @@ namespace ConexionDBAPOKEDEX
 					aux.Numero = (int)lector["Numero"];
 					aux.Nombre = (string)lector["Nombre"];
 					aux.Descripcion = (string)lector["Descripcion"];
-					aux.urlImagen = (string)lector["UrlImagen"];
+
+					/*Si lo que esta dentro del lector esta null o no*/
+					/*! negado si no es null, lo leo*/
+					/*Si la columna admite nulos no es necesario*/
+					/*if (!(lector.IsDBNull(lector.GetOrdinal("UrlImagen"))))*/
+					
+					if(!(lector["UrlImagen"] is DBNull))
+						aux.urlImagen = (string)lector["UrlImagen"];
+
+
+
+
 					/*Incoveniente cuando nace tipo no tiene instancia crear tipo = new elemento()*/
 					/*Enlace de datos erroneo tipo objeto - modificar return*/
 					aux.Tipo = new Elementos();
@@ -65,10 +76,11 @@ namespace ConexionDBAPOKEDEX
 			AccesoDatos datos = new AccesoDatos();
             try
             {
-				datos.setearConsulta("Insert into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad)values(" + nuevo.Numero + " ,' " + nuevo.Nombre + " ',' " + nuevo.Descripcion + " ', 1, @idTipo, @idDebilidad)");
+				datos.setearConsulta("Insert into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen)values(" + nuevo.Numero + " ,' " + nuevo.Nombre + " ',' " + nuevo.Descripcion + " ', 1, @idTipo, @idDebilidad, @urlImagen)");
 				/*Parametro de seteo de cagar en acceso a datos -onda declararlo para store procedure-*/
 				datos.setearParametro("@idTipo", nuevo.Tipo.ID);
 				datos.setearParametro("@idDebilidad", nuevo.Debilidad.ID);
+				datos.setearParametro("@urlImagen", nuevo.urlImagen);
 				datos.ejecutarAccion();
 
 
