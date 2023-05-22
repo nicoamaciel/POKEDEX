@@ -85,5 +85,16 @@ namespace ConexionDBAPOKEDEX
         {
 
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            /*Pasar pokemon a modificar*/
+            Pokemon seleccionado;
+            seleccionado = (Pokemon)dgvPOKEMONS.CurrentRow.DataBoundItem;
+            /*Se lo pasa como parametro al constructor de la clase, por eso de duplicar */
+            frmAltaPokemon modificar = new frmAltaPokemon(seleccionado);
+            modificar.ShowDialog();
+            cargar();
+        }
     }
 }

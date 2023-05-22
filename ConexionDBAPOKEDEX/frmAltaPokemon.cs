@@ -13,9 +13,18 @@ namespace ConexionDBAPOKEDEX
 {
     public partial class frmAltaPokemon : Form
     {
+        private Pokemon pokemon = null;
+
         public frmAltaPokemon()
         {
             InitializeComponent();
+        }
+
+        /*Duplicar para modificar pokemon*/
+        public frmAltaPokemon(Pokemon pokemon)
+        {
+            InitializeComponent();
+            this.pokemon = pokemon;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -55,7 +64,19 @@ namespace ConexionDBAPOKEDEX
             try
             {
                 cboTipo.DataSource = elementosNegocio.listar();
-                cboDebilidad.DataSource = elementosNegocio.listar(); 
+                cboDebilidad.DataSource = elementosNegocio.listar();
+                /*Si el pokemo es != de null entonces es un modificado*/
+                if(pokemon != null)
+                {
+                    txtNumero.Text = pokemon.Numero.ToString();
+                    txtNombre.Text = pokemon.Nombre;
+                    txtDescripcion.Text = pokemon.Descripcion;
+                    txtUrlImagen.Text = pokemon.urlImagen;
+                    cargarImagen(pokemon.urlImagen);
+                }
+
+
+
             }
             catch (Exception ex)
             {
