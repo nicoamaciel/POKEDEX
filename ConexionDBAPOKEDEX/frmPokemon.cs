@@ -37,6 +37,7 @@ namespace ConexionDBAPOKEDEX
 
         private void cargar()
         {
+            ///Carga imagen
             PokemonNegocio negocio = new PokemonNegocio();
 
             try
@@ -97,5 +98,29 @@ namespace ConexionDBAPOKEDEX
             modificar.ShowDialog();
             cargar();
         }
+
+        private void btnEliminarLogico_Click(object sender, EventArgs e)
+        {
+            PokemonNegocio negocio = new PokemonNegocio();
+            Pokemon seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("De verdad desea eliminar el registro?");
+                if (respuesta == DialogResult.OK)
+                {
+                    seleccionado = (Pokemon)dgvPOKEMONS.CurrentRow.DataBoundItem;
+                    negocio.eliminarLogico(seleccionado.Id);
+                    cargar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+      
     }
 }

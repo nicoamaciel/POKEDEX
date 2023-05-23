@@ -33,6 +33,7 @@ namespace ConexionDBAPOKEDEX
             this.pbPokemon = new System.Windows.Forms.PictureBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminarLogico = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOKEMONS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPokemon)).BeginInit();
             this.SuspendLayout();
@@ -82,12 +83,23 @@ namespace ConexionDBAPOKEDEX
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // btnEliminarLogico
+            // 
+            this.btnEliminarLogico.Location = new System.Drawing.Point(174, 294);
+            this.btnEliminarLogico.Name = "btnEliminarLogico";
+            this.btnEliminarLogico.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarLogico.TabIndex = 4;
+            this.btnEliminarLogico.Text = "BajaLogica";
+            this.btnEliminarLogico.UseVisualStyleBackColor = true;
+            this.btnEliminarLogico.Click += new System.EventHandler(this.btnEliminarLogico_Click);
+            // 
             // frmPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(873, 339);
+            this.Controls.Add(this.btnEliminarLogico);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.pbPokemon);
@@ -109,6 +121,7 @@ namespace ConexionDBAPOKEDEX
         private System.Windows.Forms.PictureBox pbPokemon;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminarLogico;
     }
 }
 
