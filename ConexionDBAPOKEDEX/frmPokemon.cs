@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using dominio;
 
 
 
 namespace ConexionDBAPOKEDEX
 {
 
-    
+
     public partial class frmPokemon : Form
     {
         private List<Pokemon> listaPokemon;
@@ -31,8 +24,15 @@ namespace ConexionDBAPOKEDEX
 
         private void dgvPOKEMONS_SelectionChanged(object sender, EventArgs e)
         {
-            Pokemon seleccionado = (Pokemon)dgvPOKEMONS.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.urlImagen);
+
+            /*Se rompe si quiere transformar el null(la nada) es un pokemon*/
+            if(dgvPOKEMONS.CurrentRow != null)
+            {
+                Pokemon seleccionado = (Pokemon)dgvPOKEMONS.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.urlImagen);
+
+            }
+
         }
 
         private void cargar()
@@ -44,8 +44,7 @@ namespace ConexionDBAPOKEDEX
             {
                 listaPokemon = negocio.listar();
                 dgvPOKEMONS.DataSource = listaPokemon;
-                dgvPOKEMONS.Columns["UrlImagen"].Visible = false;
-                dgvPOKEMONS.Columns["Id"].Visible = false;
+                ocultarColumnas();
                 /*Ocultar columna url imagen para mejorar visualizacion y evitar scroll*/
                 cargarImagen(listaPokemon[0].urlImagen);
             }
@@ -54,6 +53,12 @@ namespace ConexionDBAPOKEDEX
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void ocultarColumnas()
+        {
+            dgvPOKEMONS.Columns["UrlImagen"].Visible = false;
+            dgvPOKEMONS.Columns["Id"].Visible = false;
         }
 
 
@@ -121,6 +126,33 @@ namespace ConexionDBAPOKEDEX
             }
         }
 
-      
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            /*Crear lista filtrada de pokemos - propia de la clase*/
+
+            List<Pokemon> listaFiltrada;
+            string filtro = txtFiltro.Text;
+
+            if( filtro != "")
+            {
+            /*lisataPokemon tipo list -tipo coleccion- */
+            /*x => x.Nombre --> lamda ciclo contra la lista - como un foreach*/
+            /*ToUpper pasa todo a miniscula - cambiar ambos para que busque en miniscula*/
+            /*contains cadena que compara contenido y devuelve true para buscar coincidencia*/
+            listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Tipo.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+
+            }
+            else
+            {
+                listaFiltrada = listaPokemon;
+            }
+
+
+            dgvPOKEMONS.DataSource = null;
+            dgvPOKEMONS.DataSource = listaFiltrada;
+            ocultarColumnas();
+
+
+        }
     }
 }
