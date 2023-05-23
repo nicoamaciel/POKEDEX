@@ -20,6 +20,9 @@ namespace ConexionDBAPOKEDEX
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            cbxCampo.Items.Add("Numero");
+            cbxCampo.Items.Add("Nombre");
+            cbxCampo.Items.Add("Descripcion");
         }
 
         private void dgvPOKEMONS_SelectionChanged(object sender, EventArgs e)
@@ -153,6 +156,33 @@ namespace ConexionDBAPOKEDEX
             ocultarColumnas();
 
 
+        }
+
+        private void cbxCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cbxCampo.SelectedItem.ToString();
+            if (opcion == "Numero")
+            {
+                cbxCriterio.Items.Clear();
+                cbxCriterio.Items.Add("Mayor a");
+                cbxCriterio.Items.Add("Menor a");
+                cbxCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cbxCriterio.Items.Clear();
+                cbxCriterio.Items.Add("Comienza con");
+                cbxCriterio.Items.Add("Termina con");
+                cbxCriterio.Items.Add("Contiene");
+            }
+             
+        }
+
+        private void Buscar2_Click(object sender, EventArgs e)
+        {
+            string campo = cbxCampo.SelectedItem.ToString();
+            string criterio = cbxCriterio.SelectedItem.ToString();
+            string filtro = txtFiltroAvanzado.Text;
         }
     }
 }
