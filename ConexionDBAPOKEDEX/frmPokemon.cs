@@ -44,6 +44,7 @@ namespace ConexionDBAPOKEDEX
                 listaPokemon = negocio.listar();
                 dgvPOKEMONS.DataSource = listaPokemon;
                 dgvPOKEMONS.Columns["UrlImagen"].Visible = false;
+                dgvPOKEMONS.Columns["Id"].Visible = false;
                 /*Ocultar columna url imagen para mejorar visualizacion y evitar scroll*/
                 cargarImagen(listaPokemon[0].urlImagen);
             }

@@ -25,25 +25,39 @@ namespace ConexionDBAPOKEDEX
         {
             InitializeComponent();
             this.pokemon = pokemon;
+            Text = "Modificar Pokemon";
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Pokemon poke = new Pokemon();
             PokemonNegocio negocio = new PokemonNegocio();
-
 
             try
             {
-                poke.Numero = int.Parse(txtNumero.Text);
-                poke.Nombre = txtNombre.Text;
-                poke.Descripcion = txtDescripcion.Text;
-                poke.urlImagen = txtUrlImagen.Text;
-                poke.Tipo = (Elementos)cboTipo.SelectedItem;
-                poke.Debilidad = (Elementos)cboTipo.SelectedItem;
+                if(pokemon == null)
+                    pokemon = new Pokemon();
+                
+                pokemon.Numero = int.Parse(txtNumero.Text);
+                pokemon.Nombre = txtNombre.Text;
+                pokemon.Descripcion = txtDescripcion.Text;
+                pokemon.urlImagen = txtUrlImagen.Text;
+                pokemon.Tipo = (Elementos)cboTipo.SelectedItem;
+                pokemon.Debilidad = (Elementos)cboTipo.SelectedItem;
 
-                negocio.agregar(poke);
-                MessageBox.Show("Agregado con exito");
+                /*Si el id es distinto de cero estoy modificando*/
+                if(pokemon.Id != 0)
+                {
+                    negocio.modificar(pokemon);
+                    MessageBox.Show("Modificado exitosamente");
+
+                }
+                else
+                {
+                    negocio.agregar(pokemon);
+                    MessageBox.Show("Agregado con exito");
+
+                }
+
                 Close();
             }
             catch (Exception ex )
@@ -64,7 +78,13 @@ namespace ConexionDBAPOKEDEX
             try
             {
                 cboTipo.DataSource = elementosNegocio.listar();
+                /*Trabajar con clave y valor*/
+                cboTipo.ValueMember = "Id";
+                cboTipo.DisplayMember = "Descripcion";
                 cboDebilidad.DataSource = elementosNegocio.listar();
+                cboDebilidad.ValueMember = "Id";
+                cboDebilidad.DisplayMember = "Descripcion";
+
                 /*Si el pokemo es != de null entonces es un modificado*/
                 if(pokemon != null)
                 {
@@ -73,6 +93,9 @@ namespace ConexionDBAPOKEDEX
                     txtDescripcion.Text = pokemon.Descripcion;
                     txtUrlImagen.Text = pokemon.urlImagen;
                     cargarImagen(pokemon.urlImagen);
+                    /*Preseleccion tipo y debilidad en modificar*/
+                    cboTipo.SelectedValue = pokemon.Tipo.ID;
+                    cboDebilidad.SelectedValue = pokemon.Debilidad.ID;
                 }
 
 

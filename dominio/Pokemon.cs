@@ -10,6 +10,7 @@ namespace ConexionDBAPOKEDEX
 {
     public class Pokemon
     {
+        public int Id { get; set; }
         /*Uso de Annotations - arreglos de asentuacion*/
         [DisplayName("Número")]
         public int Numero { get; set; }
