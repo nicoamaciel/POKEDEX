@@ -180,9 +180,21 @@ namespace ConexionDBAPOKEDEX
 
         private void Buscar2_Click(object sender, EventArgs e)
         {
-            string campo = cbxCampo.SelectedItem.ToString();
-            string criterio = cbxCriterio.SelectedItem.ToString();
-            string filtro = txtFiltroAvanzado.Text;
+            PokemonNegocio negocio = new PokemonNegocio();
+            try
+            {
+                string campo = cbxCampo.SelectedItem.ToString();
+                string criterio = cbxCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+
+                dgvPOKEMONS.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
