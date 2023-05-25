@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
+using System.Configuration;
 namespace ConexionDBAPOKEDEX
 {
     public partial class frmAltaPokemon : Form
     {
         private Pokemon pokemon = null;
+        //file Dialog arranca nullo
+        private OpenFileDialog archivo = null;
 
         public frmAltaPokemon()
         {
@@ -57,6 +61,12 @@ namespace ConexionDBAPOKEDEX
                     MessageBox.Show("Agregado con exito");
 
                 }
+
+                //guardo imagen si la levanto locamente and si no viene de un url - no tiene http
+                if(archivo != null && !(txtUrlImagen.Text.ToUpper().Contains("HTTP")))
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+
+
 
                 Close();
             }
@@ -130,6 +140,25 @@ namespace ConexionDBAPOKEDEX
 
         }
 
+        private void agregarImagen_Click(object sender, EventArgs e)
+        {
+            /*Levantar imagen desde propio equipo*/
 
+            OpenFileDialog archivo = new OpenFileDialog();
+            /*Filtros que (archivos permite cargar) para la ventana de dialogo de carga */
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
+            archivo.ShowDialog();
+            if(archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtUrlImagen.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
+
+                //Guardo la imagen, con clase file system.io
+                //guardar en c, si no existe se crea. Se lee ruta desde app.config /assembly system configuration
+                //Agregar libreria system configuration y usar configuration manager
+                File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+            }
+
+        }
     }
 }

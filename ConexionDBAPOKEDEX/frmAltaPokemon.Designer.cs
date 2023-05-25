@@ -44,6 +44,7 @@ namespace ConexionDBAPOKEDEX
             this.Url = new System.Windows.Forms.Label();
             this.txtUrlImagen = new System.Windows.Forms.TextBox();
             this.pbPokemos = new System.Windows.Forms.PictureBox();
+            this.agregarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbPokemos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,19 +178,30 @@ namespace ConexionDBAPOKEDEX
             // 
             // pbPokemos
             // 
-            this.pbPokemos.Location = new System.Drawing.Point(228, 37);
+            this.pbPokemos.Location = new System.Drawing.Point(275, 37);
             this.pbPokemos.Name = "pbPokemos";
             this.pbPokemos.Size = new System.Drawing.Size(205, 178);
             this.pbPokemos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPokemos.TabIndex = 14;
             this.pbPokemos.TabStop = false;
             // 
+            // agregarImagen
+            // 
+            this.agregarImagen.Location = new System.Drawing.Point(221, 121);
+            this.agregarImagen.Name = "agregarImagen";
+            this.agregarImagen.Size = new System.Drawing.Size(39, 23);
+            this.agregarImagen.TabIndex = 15;
+            this.agregarImagen.Text = "+";
+            this.agregarImagen.UseVisualStyleBackColor = true;
+            this.agregarImagen.Click += new System.EventHandler(this.agregarImagen_Click);
+            // 
             // frmAltaPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.ClientSize = new System.Drawing.Size(445, 320);
+            this.ClientSize = new System.Drawing.Size(527, 320);
+            this.Controls.Add(this.agregarImagen);
             this.Controls.Add(this.pbPokemos);
             this.Controls.Add(this.txtUrlImagen);
             this.Controls.Add(this.Url);
@@ -232,5 +244,6 @@ namespace ConexionDBAPOKEDEX
         private System.Windows.Forms.Label Url;
         private System.Windows.Forms.TextBox txtUrlImagen;
         private System.Windows.Forms.PictureBox pbPokemos;
+        private System.Windows.Forms.Button agregarImagen;
     }
 }
